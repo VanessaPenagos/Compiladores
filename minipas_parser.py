@@ -82,19 +82,19 @@ def p_declaracion_estructurada(p):
 	pass
 
 def p_declaracion_if(p):
-	'''declaracion_if : IF exprecion THEN declaracion
-					  | IF exprecion THEN declaracion ELSE declaracion'''
+	'''declaracion_if : IF expresion THEN declaracion
+					  | IF expresion THEN declaracion ELSE declaracion'''
 	pass
 
 def p_declaracion_while(p):
-	'declaracion_while : WHILE exprecion DO declaracion'
+	'declaracion_while : WHILE expresion DO declaracion'
 	pass
 
 def p_declaracion_for(p):
-	'declaracion_for : FOR asignacion TO exprecion DO 
+	'declaracion_for : FOR asignacion TO expresion DO declaracion'
 
 def p_asignacion(p):
-	'asignacion : ID ASIG exprecion PCOMA'
+	'asignacion : ID ASIG expresion PCOMA'
 	pass
 
 def p_lectura_1(p):
@@ -114,18 +114,18 @@ def p_escritura_2(p):
 	pass
 
 def p_exp(p):
-	'''exp : exprecion
-		   | exprecion COMA exp'''
+	'''exp : expresion
+		   | expresion COMA exp'''
 	pass
 
-def p_exprecion(p):
-	'''exprecion : exprecion_simple
-				 | exprecion_simple operador_relacional exprecion'''
+def p_expresion(p):
+	'''expresion : expresion_simple
+				 | expresion_simple operador_relacional expresion'''
 	pass
 
-def p_exprecion_simple(p):
-	'''exprecion_simple : signo termino
-						| signo termino adicion exprecion_simple'''
+def p_expresion_simple(p):
+	'''expresion_simple : signo termino
+						| signo termino adicion expresion_simple'''
 	pass
 
 def p_signo(p):
@@ -144,7 +144,7 @@ def p_factor(p):
 			  | STRING
 			  | ID
 			  | NUM
-			  | PARI exprecion PARD
+			  | PARI expresion PARD
 			  | NOT factor'''
 	pass
 
@@ -175,7 +175,7 @@ def p_vacio(p):
 def p_error(p):
 	if VERBOSE:
 		if p is not None:
-			print ("ERROR SINTACTICO EN LA LINEA " + str(p.lexer.lineno) + " NO SE ESPERABA EL Token  " + str(p.value))
+			print ("ERROR SINTACTICO EN LA LINEA " + str(p.lexer.lineno) + " NO SE ESPERABA EL TOKEN  " + str(p.value))
 		else:
 			print ("ERROR SINTACTICO EN LA LINEA: " + str(cminus_lexer.lexer.lineno))
 	else:
@@ -195,5 +195,5 @@ if __name__ == '__main__':
 	data = f.read()
 	#print (data)
 	parser.parse(data, tracking=True)
-	print("Hola bebe, no tienes errores sintacticos")
+	print("No se encontraron errores sintacticos")
 	#input()
