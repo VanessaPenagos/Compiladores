@@ -1,0 +1,13 @@
+PROGRAM EJER39; 
+        USES CRT;
+
+        VAR importe_bruto:FLOAT;
+        VAR descuento, total:float;
+
+BEGIN
+
+        a := 5;
+while a < 6 do
+  writeln (a);
+
+END
